@@ -6,6 +6,7 @@ import Type "Types";
 
 actor class Homework() {
   type Homework = Type.Homework;
+  let homeworkBuffer = Buffer.Buffer<Homework>(0);
 
   // Add a new homework task
   public shared func addHomework(homework : Homework) : async Nat {
