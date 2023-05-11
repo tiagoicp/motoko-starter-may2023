@@ -6,12 +6,15 @@ import Iter "mo:base/Iter";
 import HashMap "mo:base/HashMap";
 import Nat "mo:base/Nat";
 import Nat32 "mo:base/Nat32";
+import Hash "mo:base/Hash";
 
 actor class StudentWall() {
   type Message = Type.Message;
   type Content = Type.Content;
   type Survey = Type.Survey;
   type Answer = Type.Answer;
+
+  var wall = HashMap.HashMap<Nat, Message>(0, Nat.equal, Hash.hash);
 
   // Add a new message to the wall
   public shared ({ caller }) func writeMessage(c : Content) : async Nat {

@@ -49,7 +49,7 @@ let success = run([
               assertTrue(homework.title == homeworkTest.title);
             };
             case (#err(message)) {
-              Debug.trap("Homework not found");
+              Debug.trap("get Homework not found");
             };
           };
         },
@@ -75,7 +75,7 @@ let success = run([
               true;
             };
             case (#err(message)) {
-              Debug.trap("Homework not found");
+              Debug.trap("update Homework not found");
             };
           };
         },
@@ -94,7 +94,7 @@ let success = run([
               true;
             };
             case (#err(message)) {
-              Debug.trap("Homework not found");
+              Debug.trap("complete Homework not found");
             };
           };
         },
@@ -113,7 +113,7 @@ let success = run([
               true;
             };
             case (#err(message)) {
-              Debug.trap("Homework not found");
+              Debug.trap("delete Homework not found");
             };
           };
         },
@@ -139,6 +139,7 @@ let success = run([
       it(
         "should get Homework not completed",
         do {
+          ignore await day2Actor.markAsCompleted(0);
           ignore await day2Actor.addHomework(homeworkTest);
           let response = await day2Actor.getPendingHomework();
           assertTrue(response.size() == 1);
